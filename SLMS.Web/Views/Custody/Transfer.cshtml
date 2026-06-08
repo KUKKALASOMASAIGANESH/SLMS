@@ -1,0 +1,55 @@
+﻿@model SLMS.Web.Models.TransferCustodyViewModel
+
+@{
+    ViewData["Title"] = "Transfer Custody";
+}
+
+<h2>Transfer Custody</h2>
+
+<form asp-action="Transfer" method="post">
+
+    <div class="mb-3">
+        <label class="form-label">Book</label>
+
+        <select asp-for="BookId" class="form-select">
+
+            @foreach (var book in ViewBag.Books)
+            {
+                <option value="@book.BookId">
+                    @book.Title
+                </option>
+            }
+
+        </select>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Transfer To</label>
+
+        <select asp-for="ToDepartment" class="form-select">
+            <option value="">-- Select Department --</option>
+            <option>Library</option>
+            <option>Accounts</option>
+            <option>Administration</option>
+            <option>Environment</option>
+            <option>Geology</option>
+            <option>Hardware</option>
+            <option>Human Resources</option>
+            <option>Public Health Engineering</option>
+            <option>Survey</option>
+        </select>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Remarks</label>
+
+        <textarea asp-for="Remarks"
+                  class="form-control">
+        </textarea>
+    </div>
+
+    <button type="submit" class="btn btn-primary">
+        Transfer Custody
+    </button>
+
+</form>
